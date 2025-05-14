@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.practicaapps.databinding.FragmentJocBinding;
 
 import java.util.Random;
+import com.example.practicaapps.data.Partida;
+import com.example.practicaapps.data.PartidaDatabase;
 
 public class JocFragment extends Fragment {
 
@@ -54,11 +56,24 @@ public class JocFragment extends Fragment {
 
         if (viewModel.isJuegoTerminado()) return;
 
+        long tiempoInicio = System.currentTimeMillis(); // inicio de la ronda
+
         String eleccionFinal = eleccionUsuario.isEmpty()
                 ? opciones[new Random().nextInt(opciones.length)]
                 : eleccionUsuario;
         String eleccionMaquina = opciones[new Random().nextInt(opciones.length)];
-        String resultado = viewModel.jugarRonda(eleccionFinal,eleccionMaquina);
+        String resultado = viewModel.jugarRonda(eleccionFinal, eleccionMaquina);
+
+        long tiempoFin = System.currentTimeMillis(); // fin de la ronda
+
+        Partida nuevaPartida = new Partida();
+        nuevaPartida.eleccionUsuario = eleccionFinal;
+        nuevaPartida.eleccionMaquina = eleccionMaquina;
+        nuevaPartida.resultado = resultado;
+        nuevaPartida.tiempoPartida = tiempoFin - tiempoInicio;
+
+        PartidaDatabase db = PartidaDatabase.obtenerInstancia(requireContext());
+        new Thread(() -> db.partidaDao().insertarPartida(nuevaPartida)).start(); // ejecución fuera del hilo principal
 
         binding.textResultado.setText(resultado);
         actualizarUI();
@@ -119,6 +134,7 @@ public class JocFragment extends Fragment {
         binding.textResultado.setText("Esperant elecció...");
         iniciarTemporizador();
     }
+
 
 
     @Override
