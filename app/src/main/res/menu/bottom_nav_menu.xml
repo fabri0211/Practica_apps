@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_joc"
+        android:icon="@drawable/baseline_sports_esports_24"
+        android:title="@string/title_joc"
+        />
+
+    <item
+        android:id="@+id/navigation_principal"
+        android:icon="@drawable/baseline_leaderboard_24"
+        android:title="@string/title_principal" />
+
+    <item
+        android:id="@+id/navigation_configuracio"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="@string/title_configuracio" />
+
+</menu>

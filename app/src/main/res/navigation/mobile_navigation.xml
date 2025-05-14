@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_joc">
+
+    <fragment
+        android:id="@+id/navigation_joc"
+        android:name="com.example.practicaapps.ui.home.JocFragment"
+        android:label="Joc"
+        tools:layout="@layout/fragment_joc" />
+
+    <fragment
+        android:id="@+id/navigation_principal"
+        android:name="com.example.practicaapps.ui.dashboard.PrincipalFragment"
+        android:label="Principal"
+        tools:layout="@layout/fragment_principal" />
+
+    <fragment
+        android:id="@+id/navigation_configuracio"
+        android:name="com.example.practicaapps.ui.notifications.ConfiguracioFragment"
+        android:label="Configuració"
+        tools:layout="@layout/fragment_configuracio" />
+</navigation>
