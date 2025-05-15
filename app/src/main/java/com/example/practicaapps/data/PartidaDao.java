@@ -14,5 +14,5 @@ public interface PartidaDao {
     void insertarPartida(Partida partida);
 
     @Query("SELECT * FROM Partida ORDER BY id DESC")
-    LiveData<List<Partida>> obtenerTodas();
+    LiveData<List<Partida>> getTodasPartidas();
 }
