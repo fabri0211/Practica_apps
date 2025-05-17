@@ -11,17 +11,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practicaapps"
         tools:targetApi="31">
+
+        <!-- Splash (pantalla de inicio) -->
         <activity
             android:name=".SplashActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Declaración de MainActivity (pantalla principal) -->
+        <activity android:name=".MainActivity" />
+
     </application>
 
 </manifest>
