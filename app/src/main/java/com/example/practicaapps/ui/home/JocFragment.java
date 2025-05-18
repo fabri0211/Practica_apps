@@ -1,7 +1,9 @@
 package com.example.practicaapps.ui.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.practicaapps.databinding.FragmentJocBinding;
 
+import java.util.List;
 import java.util.Random;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
 import com.example.practicaapps.data.Partida;
 import com.example.practicaapps.data.PartidaDatabase;
 
@@ -61,7 +70,19 @@ public class JocFragment extends Fragment {
         String eleccionFinal = eleccionUsuario.isEmpty()
                 ? opciones[new Random().nextInt(opciones.length)]
                 : eleccionUsuario;
-        String eleccionMaquina = opciones[new Random().nextInt(opciones.length)];
+
+        String estrategia = requireContext()
+                .getSharedPreferences("GamePrefs", Context.MODE_PRIVATE)
+                .getString("machine_strategy", "aleatoria");
+
+        String eleccionMaquina;
+
+        if ("exploracio".equals(estrategia)) {
+            eleccionMaquina = viewModel.obtenerEleccionIAConHistorial();
+        } else {
+            eleccionMaquina = opciones[new Random().nextInt(opciones.length)];
+        }
+
         String resultado = viewModel.jugarRonda(eleccionFinal, eleccionMaquina);
 
         long tiempoFin = System.currentTimeMillis(); // fin de la ronda
@@ -71,9 +92,11 @@ public class JocFragment extends Fragment {
         nuevaPartida.eleccionMaquina = eleccionMaquina;
         nuevaPartida.resultado = resultado;
         nuevaPartida.tiempoPartida = tiempoFin - tiempoInicio;
+        nuevaPartida.estrategia = estrategia;
+        nuevaPartida.fecha = System.currentTimeMillis();
 
         PartidaDatabase db = PartidaDatabase.obtenerInstancia(requireContext());
-        new Thread(() -> db.partidaDao().insertarPartida(nuevaPartida)).start(); // ejecución fuera del hilo principal
+        new Thread(() -> db.partidaDao().insertarPartida(nuevaPartida)).start();
 
         binding.textResultado.setText(resultado);
         actualizarUI();
@@ -81,6 +104,9 @@ public class JocFragment extends Fragment {
         if (viewModel.isJuegoTerminado()) {
             mostrarDialogFinal();
         }
+        Log.d("IA", "Estrategia seleccionada: " + estrategia);
+        Log.d("IA", "Elecció de la màquina: " + eleccionMaquina);
+
     }
 
     private void actualizarUI() {
@@ -134,6 +160,7 @@ public class JocFragment extends Fragment {
         binding.textResultado.setText("Esperant elecció...");
         iniciarTemporizador();
     }
+
 
 
 
