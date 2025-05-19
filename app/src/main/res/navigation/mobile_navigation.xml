@@ -22,4 +22,10 @@
         android:name="com.example.practicaapps.ui.notifications.ConfiguracioFragment"
         android:label="Configuració"
         tools:layout="@layout/fragment_configuracio" />
+
+    <fragment
+        android:id="@+id/navigation_credits"
+        android:name="com.example.practicaapps.ui.credits.CreditsFragment"
+        android:label="Crèdits"
+        tools:layout="@layout/fragment_credits" />
 </navigation>

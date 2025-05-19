@@ -16,5 +16,8 @@
         android:id="@+id/navigation_configuracio"
         android:icon="@drawable/baseline_settings_24"
         android:title="@string/title_configuracio" />
-
+    <item
+        android:id="@+id/navigation_credits"
+        android:icon="@drawable/baseline_info_24"
+        android:title="Crèdits" />
 </menu>
