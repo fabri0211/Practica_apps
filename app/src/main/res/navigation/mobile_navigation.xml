@@ -28,4 +28,12 @@
         android:name="com.example.practicaapps.ui.credits.CreditsFragment"
         android:label="Crèdits"
         tools:layout="@layout/fragment_credits" />
+
+    <fragment
+        android:id="@+id/navigation_informacio"
+        android:name="com.example.practicaapps.ui.info.InformacioFragment"
+        android:label="Informació"
+        tools:layout="@layout/fragment_informacio" />
+
+
 </navigation>

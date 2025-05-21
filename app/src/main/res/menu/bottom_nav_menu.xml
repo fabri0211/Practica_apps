@@ -18,6 +18,13 @@
         android:title="@string/title_configuracio" />
     <item
         android:id="@+id/navigation_credits"
-        android:icon="@drawable/baseline_info_24"
+        android:icon="@drawable/baseline_list_24"
         android:title="Crèdits" />
+
+    <item
+        android:id="@+id/navigation_informacio"
+        android:icon="@drawable/baseline_info_24"
+        android:title="Informació" />
+
+
 </menu>
