@@ -13,7 +13,7 @@
             android:id="@+id/textHistorial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripcio joc"
+            android:text="Pedra, paper, tissora, llangardaix i spock és una expansió del classic joc que inclou dos armes més: llangardaix i Spock. Aquestes noves variants "
             android:textSize="16sp"
             android:layout_marginBottom="16dp" />
 
@@ -21,7 +21,7 @@
             android:id="@+id/textRegles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Regles del joc"
+            android:text="Regles del joc:\n- Tisora guanya contra Paper i Llangardaix, i perd contra Pedra i Spock.\n- Paper guanya contra Pedra i Spock, i perd contra Tisora i Llangardaix.\n- Pedra guanya contra Llangardaix i Tisora, i perd contra Paper i Spock.\n- Llangardaix guanya contra Spock i Paper, i perd contra Pedra i Tisora.\n- Spock guanya contra Tisora i Pedra, i perd contra Llangardaix i Paper."
             android:textSize="16sp" />
     </LinearLayout>
 </ScrollView>

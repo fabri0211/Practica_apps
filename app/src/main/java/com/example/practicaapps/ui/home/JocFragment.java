@@ -124,6 +124,10 @@ public class JocFragment extends Fragment {
             public void onFinish(){
                 if (!viewModel.isJuegoTerminado()){
                     jugar("");
+
+                    if(!viewModel.isJuegoTerminado()){
+                        iniciarTemporizador();
+                    }
                 }
             }
         }.start();
